@@ -8,7 +8,7 @@
 }
 
 body {
-  background-image: url("../img/train-5.jpeg");
+  background-image: url("../img/train-3.jpeg");
     /* linear-gradient(110deg, #457FFF, #B0FFCB); */
   background-size: cover;
   /* letter-spacing: -1px;  */
@@ -33,7 +33,7 @@ h1 {
 }
 
 p {
-  font-family: 'Merriweather Sans', sans-serif;
+  /* font-family: 'Merriweather Sans', sans-serif; */
   font-size: 24px;
   line-height: 28px;
   margin: 5px px;
@@ -45,7 +45,7 @@ p {
 #schedule-table th,
     td {
       display: inline-block;
-      width: 18%;
+      width: 16.575%;
     }
 
 /* .form-container { */

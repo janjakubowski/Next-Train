@@ -1,8 +1,28 @@
 // //////////////////// Global Varibles
-// var trainNumber = 0;
+
+var uid = "";
+var route = "";
+var origin = "";
+var next = "";
+var interval = "";
+var isUpdated = false;
+
+function updateTrains () {
+
+  tempNext = moment(next, "X");
+  console.log("start: " + tempNext.format("MM/DD/YY H:mm"));
+  var currentDate = moment();
+    console.log("current: " + currentDate.format("MM/DD/YY H:mm"));
+    while (currentDate >= tempNext) {
+      tempNext = tempNext.add(interval, "m");
+    }
+    console.log("next: " + tempNext.format("MM/DD/YY H:mm"));
+    next = tempNext;
+
+}
 
 // Initialize Firebase
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyARh801jsvtY4XFk3Mx122JdISZGYs7D8U",
   authDomain: "train-schedule-c9a32.firebaseapp.com",
   databaseURL: "https://train-schedule-c9a32.firebaseio.com",
@@ -15,6 +35,8 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 var db = firebase.database();
+
+
 
 // var firstMoment = moment("13:00","H:mm");
 // var tempinterval = 5000;
@@ -31,75 +53,90 @@ var db = firebase.database();
 
 
 $("#add-train-btn").on("click", function(event) {
+
   event.preventDefault();
 
   // Grabs user input
-  var trainRoute = $("#train-route-input").val().trim();
-  var trainDestination= $("#train-destination-input").val().trim();
-  var trainFirst = moment($("#train-first-departure-input").val().trim(), "H:mm").format("X");
-  var trainInterval = $("#train-interval-input").val().trim();
-      trainInterval *= 60000;
+  var route = $("#train-route-input").val().trim();
+  var origin= $("#train-origin-input").val().trim();
+  var next = moment($("#train-next-arrival-input").val().trim(), "H:mm").format("X");
+  var interval = $("#train-interval-input").val().trim();
+      // trainInterval *= 60000;
 
   
-    // route, destination, first, interval 
+    // route, origin, next, interval 
 
   var newChooChoo = {
-    route: trainRoute,
-    destination: trainDestination,
-    first: trainFirst,
-    interval: trainInterval
+    route: route,
+    origin: origin,
+    next: next,
+    interval: interval
   };
 
   // Upload to the database
   db.ref().push(newChooChoo);
 
   // Logs everything to console
-  console.log(newChooChoo.route);
-  console.log(newChooChoo.destination);
-  console.log(newChooChoo.first);
-  console.log(newChooChoo.interval);
+  // console.log(newChooChoo.route);
+  // console.log(newChooChoo.origin);
+  // console.log(newChooChoo.next);
+  // console.log(newChooChoo.interval);
 
-  // alert("train successfully added");
+  $('#added-train-info').text(newChooChoo.route + " from " + newChooChoo.origin);
+  $('#modalConfirmTrainAdded').modal('show');
 
   // Clears all of the text-boxes
   $("#train-route-input").val("");
-  $("#train-destination-input").val("");
-  $("#train-first-departure-input").val("");
+  $("#train-origin-input").val("");
+  $("#train-next-departure-input").val("");
   $("#train-interval-input").val("");
 });
 
 db.ref().on("child_added", function(childSnapshot) {
-  console.log(childSnapshot.val());
+  // console.log(childSnapshot);
 
   // Store everything into a variable.
-  var route = childSnapshot.val().route;
-  var destination = childSnapshot.val().destination;
-  var first = childSnapshot.val().first;
-  var interval = childSnapshot.val().interval;
+  uid = childSnapshot.key
+  route = childSnapshot.val().route;
+  origin = childSnapshot.val().origin;
+  next = childSnapshot.val().next;
+  interval = childSnapshot.val().interval;
+
+  updateTrains();
 
   // Train Info
-  console.log("route: " + route + " | "
-              + "destination: " + destination + " | "
-              + "first: " + first + " | "
+  console.log("uid: " + uid + " | "
+              + "route: " + route + " | "
+              + "origin: " + origin + " | "
+              + "next: " + next + " | "
               + "interval: " + interval);
 
-
-
+      if (route == "janskis") {
+      console.log ("I am here route: " + route);
+                  // var t_update = {}
+                  //     t_update [uid] = {
+                  //         junnk: "double-junk"
+                  //         };
+                
+                  // // Upload to the database
+                  route = "jan";
+                  db.ref(uid).update({ route: "jan" });
+                }
 
 
   // Create the new row
-  var intervalPretty = (interval/60000) + " minutes";
-  var convertedDate = moment(first, "X");
-  var temp = convertedDate.toNow().diff(moment(),"minutes");
+  
+  var convertedTime = moment(next, "X");
+      convertedTime.fromNow();
+
+  // var temp = Math.floor(convertedTime.diff(moment())/60000) + " minutes";
   var newRow = $("<tr>").append(
-    // $("<td>").text(trainNumber),
     $("<td>").text(route),
-    $("<td>").text(destination),
-    
-    $("<td>").text(convertedDate.format("H:mm")),
-    // $("<td>").text(200),
-    $("<td>").text(temp),
-    $("<td>").text(intervalPretty)
+    $("<td>").text(origin),
+    $("<td>").text(convertedTime.format("H:mm")),
+    $("<td>").text(Math.floor(convertedTime.diff(moment())/60000) + " minutes"),
+    $("<td>").text("every " + interval + " minutes"),
+    $("<td>").text("")
   );
 
 //   // Append the new row to the table
