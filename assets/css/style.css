@@ -1,22 +1,18 @@
-/* style.css : giftastic stylesheet */
+/* style.css : choo-choo stylesheet */
 
 /* */
 * {
   font-family: Georgia, Times, "Times New Roman", serif;
-  /* font-family: 'Merriweather Sans', sans-serif; */
   font-size: 20px;
 }
 
 body {
-  background-image: url("../img/train-3.jpeg");
-    /* linear-gradient(110deg, #457FFF, #B0FFCB); */
+  background-image: url("../img/train-5.jpeg");
   background-size: cover;
-  /* letter-spacing: -1px;  */
 }
 
 h1, h2, h3, h4 {
   font-family: 'Arial', 'Helvetica Neue', Helvetica, sans-serif;
-  /* font-family: 'Merriweather Sans', sans-serif; */
 }
 
 body, html {
@@ -33,60 +29,32 @@ h1 {
 }
 
 p {
-  /* font-family: 'Merriweather Sans', sans-serif; */
   font-size: 24px;
   line-height: 28px;
   margin: 5px px;
   padding: 2px  5px;
 }
 
-/* START HERE: flexbox for header & user input section */
-
-#schedule-table th,
-    td {
+#schedule-table th, td {
       display: inline-block;
       width: 16.575%;
-    }
+}
 
-/* .form-container { */
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-  /* border:20px solid mistyrose; */
-  /* flex-shrink: 0 0 2 2 0; */
-  /* flex-grow: 10 10 0 0 0; */
-  
-  /* flex-direction: row; */
-/* } */
 
-/* .input-text {
-  min-width: 25%;
-} */
-    /* .train-info-form > * {
-      border:0;
-      padding:10px;
-      background:white;
-      line-height:50px;
-      font-size: 20px;
-      border-radius:0;
-      outline:0;
-      border-right:1px solid rgba(0,0,0,0.2);
-      -webkit-appearance:none;
-    }
-    
-    .train-info-form > *:last-child {
-      border-right: 0;
-    } */
+train-info-form {
+  z-index: 10;
+  border-radius:5px;
+  /* border:20px solid rgba(0,0,0,0.3); */
+  margin: 10px 2px;
+  /* display:flex; */
+}
 
-    train-info-form {
-      z-index: 10;
-      border-radius:5px;
-      /* border:20px solid rgba(0,0,0,0.3); */
-      margin: 10px 2px;
-      /* display:flex; */
-    }
+.modify:hover {
+  color: blue;
+}
 
-    /* .btn-sm {
-      margin-right: 0;
-    } */
+.last-col-item {
+  padding: auto 5px;
+}
+
 /* END OF FILE */

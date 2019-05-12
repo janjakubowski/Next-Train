@@ -28,9 +28,9 @@ Leverage knowledge from the previous weeks, add the following:
 
 ### Bonus Goals
 
-* <yes> Update "minutes to arrival" and "next train time" text once every minute.
+* <maybe> Update "minutes to arrival" and "next train time" text once every minute.
 
-* <yes>Try adding `update` and `remove` buttons for each train. 
+* <maybe>Try adding `update` and `remove` buttons for each train. 
 
 * <no> Make it so that only users who log into the site with their Google or GitHub accounts can use your site. 
 
@@ -46,7 +46,7 @@ In light of the fact this homework is being done simulatenously to Project One, 
     * Subway: this station is one of the trains on the line and there are trains going in both direction.
     * Commuter: this station is the terminus of the line
 
-* have two table: arrivals and departures
+* have two display tabs: arrivals and departures
 
 ## My Portfolio 
 * [See how it works for yourself](http)

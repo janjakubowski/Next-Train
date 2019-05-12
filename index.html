@@ -5,7 +5,7 @@
 <head>
 
   <meta charset="UTF-8">
-  <title>Next Train</title>
+  <title>When's the Next Train</title>
 
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -33,36 +33,31 @@
     <div class="jumbotron" style="background-color: black; color: white;">
         <h1 class="text-center">That's enter<span style="color: #ff0000">train</span>ment</h1>
         <h2 class="text-center">Ease The Strain -- Go By Train</h2>
-        <h3 class="text-center">Let's Go Skiing</h3>
-        <!-- <button class="btn float-right" id="initialize-btn">Initialize</button> -->
-        <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#modalAddTrain">Add a Train</button>
+        <button class="btn btn-primary float-right" data-toggle="modal" data-target="#modalAddTrain">Add a Train</button>
         <button class="btn float-left" id="about-btn">About</button>
     </div>
     <!-- end of Jumbotron -->
       
     <!-- Train Schedule in a table in a card -->
     <div class="row">
-
       <div class="col-md-12">
 
         <!-- Schedule-->
-        <div class="card mb-4">
+        <div class="card mb-4" >
           <div class="card-header">Schedule</div>
           <div class="card-body">
             <table class="table table-md table-hover table-striped" id='schedule-table'>
               <thead>
                 <tr>
                   <th scope="col">Train Name</th>
-                  <!-- <th scope="col">Route</th> -->
                   <th scope="col">Origin</th>
-                  
                   <th scope="col">Scheduled </th>
                   <th scope="col">Minutes Away</th>
                   <th scope="col">Frequency</th>
                   <th scope="col"></th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody id="abc">
               </tbody>
             </table>
           </div>
@@ -71,141 +66,117 @@
     </div>
     <!-- end of Train Schedule in a table -->
     
-    <!-- add a new Train form in a card -->
-    <!-- <div class="row"> -->
-      <!-- <div class="col-md-12"> -->
-            <!-- <div class="col-md-12 "> -->
-              <!-- Add Train  -->
-          <!-- <div class="card mb-4"> -->
-              <!-- <div class="card-header">Add Train</div> -->
-              <!-- <div class="card-body"> -->
-      
-            <!-- <div class="form-container"> -->
-          
-              <!-- <form class="train-info-form"> -->
-
-                <!-- <div class="row"> -->
-                  <!-- <div class="form-group"> -->
-                    <!-- <label for="train-route-input">Train Name</label> -->
-                    <!-- <input  id="train-route-input" class="form-control" placeholder="Polar Express" type="text"> -->
-                  <!-- </div> -->
-                  <!-- <div class="form-group"> -->
-                    <!-- <label for="train-origin-input">Train Origin</label> -->
-                    <!-- <input  id="train-origin-input" class="form-control" placeholder="North Pole" type="text"> -->
-                  <!-- </div> -->
-                  <!-- <div class="form-group"> -->
-                    <!-- <label for="train-next-arrival-input">Next Train Arrives At</label> -->
-                    <!-- <input  id="train-next-arrival-input" class="form-control" placeholder="23:59 (24-hr clock)" type="text"> -->
-                  <!-- </div> -->
-                  <!-- <div class="form-group"> -->
-                    <!-- <label for="train-interval-input">Frequency</label> -->
-                    <!-- <input  id="train-interval-input" class="form-control" placeholder="Frequency in minutes" type="text"> -->
-                  <!-- </div> -->
-                  <!-- <div class="col-md-1"></div>  
-                  <div class="col-md-1"> -->
-                    <!-- <button class="btn btn-primary btn-sm" id="add-train-btn">Submit</button> -->
-                  <!-- </div>   -->
-                  <!-- <div class="md-2"></div> -->
-                <!-- </div> -->
-
-              <!-- </form> -->
-
-            <!-- </div> -->
-          <!-- </div>  end of card -->
-
-      <!-- </div>  end of 12 wide column -->
-    
-    <!-- </div>  end of add a new Train form in a card -->
-
-    <!-- Button trigger modal-->
-<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalConfirmDelete">Launch
-  modal</button> -->
-
-<!--Modal: modalAddTrain-->
-<div class="modal fade" id="modalAddTrain" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
-    <!--Content-->
-    <div class="modal-content text-center">
-      <!--Header-->
-      <div class="modal-header d-flex justify-content-center">
-        <p class="heading">Add A Train</p>
-      </div>
-
-      <!--Body-->
-      <div class="modal-body">
-
-          <form class="train-info-form">
-
-              <!-- <div class="row"> -->
-                <div class="form-group">
-                  <label for="train-route-input">Train Name</label>
-                  <input  id="train-route-input" class="form-control" placeholder="Polar Express" type="text">
-                </div>
-                <div class="form-group">
-                  <label for="train-origin-input">Train Origin</label>
-                  <input  id="train-origin-input" class="form-control" placeholder="North Pole" type="text">
-                </div>
-                <div class="form-group">
-                  <label for="train-next-arrival-input">Next Train Arrives At</label>
-                  <input  id="train-next-arrival-input" class="form-control" placeholder="23:59 (24-hr clock)" type="text">
-                </div>
-                <div class="form-group">
-                  <label for="train-interval-input">Frequency</label>
-                  <input  id="train-interval-input" class="form-control" placeholder="Frequency in minutes" type="text">
-                </div>
-                <!-- <div class="col-md-1"></div>  
-                <div class="col-md-1"> -->
-                  
-                <!-- </div>   -->
-                <!-- <div class="md-2"></div> -->
-              <!-- </div> -->
-
-            </form>
-
-      </div>
-
-      <!--Footer-->
-      <div class="modal-footer flex-center">
-        <!-- <a href="" class="btn  btn-outline-danger">Yes</a> -->
-        <button class="btn btn-primary btn-sm waves-effect" data-dismiss="modal" id="add-train-btn">Submit</button>
-        <button class="btn  btn-danger waves-effect" data-dismiss="modal">Cancel</button>
-        <!-- <a type="button" class="btn  btn-danger waves-effect" data-dismiss="modal">Cancel</a> -->
+    <!--Modal: modalAddTrain  -->
+    <div class="modal fade" id="modalAddTrain" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+        <!--Content-->
+        <div class="modal-content text-center">
+          <!--Header-->
+          <div class="modal-header d-flex justify-content-center">
+            <p class="heading">Add A Train</p>
+          </div>
+          <!--Body-->
+          <div class="modal-body">
+              <form class="train-info-form">
+                  <div class="form-group">
+                    <label for="train-route-input">Train Name</label>
+                    <input  id="train-route-input" class="form-control" placeholder="Polar Express" type="text">
+                  </div>
+                  <div class="form-group">
+                    <label for="train-origin-input">Train Origin</label>
+                    <input  id="train-origin-input" class="form-control" placeholder="North Pole" type="text">
+                  </div>
+                  <div class="form-group">
+                    <label for="train-next-arrival-input">Next Train Arrives At</label>
+                    <input  id="train-next-arrival-input" class="form-control" placeholder="23:59 (24-hr clock)" type="text">
+                  </div>
+                  <div class="form-group">
+                    <label for="train-interval-input">Frequency</label>
+                    <input  id="train-interval-input" class="form-control" placeholder="in minutes" type="text">
+                  </div>
+              </form>
+          </div>
+          <!--Footer-->
+          <div class="modal-footer flex-center">
+            <button class="btn btn-primary waves-effect" data-dismiss="modal" id="add-train-btn">Submit</button>
+            <button class="btn btn-danger waves-effect" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
       </div>
     </div>
-    <!--/.Content-->
-  </div>
-</div>
-<!--Modal: modalAddTrain-->
-<!--Modal: modalConfirmTrainAdded-->
-<div class="modal fade" id="modalConfirmTrainAdded" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
-    <!--Content-->
-    <div class="modal-content text-center">
-      <!--Header-->
-      <div class="modal-header d-flex justify-content-center">
-        <p class="heading">Successful</p>
-      </div>
-      
-      <!--Body-->
-      <div class="modal-body">
-        
-        <p class="heading" id="added-train-info"></p>
-        <i class="fas fa-thumbs-up fa-2x animated rotateIn"></i>
+    <!--Modal: modalAddTrain -->
 
-      </div>
-
-      <!--Footer-->
-      <div class="modal-footer flex-center">
-        <!-- <a href="" class="btn  btn-outline-danger">Yes</a> -->
-        <a type="button" class="btn  btn-success waves-effect" data-dismiss="modal">OK</a>
+    <!--Modal: modalModifyTrain  -->
+    <div class="modal fade" id="modalModifyTrain" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+        <!--Content-->
+        <div class="modal-content text-center">
+          <!--Header-->
+          <div class="modal-header d-flex justify-content-center">
+            <p class="heading">Update This Train</p>
+          </div>
+          <!--Body-->
+          <div class="modal-body">
+              <form class="train-info-form">
+                  <div class="form-group">
+                    <label for="train-route-input">Train Name</label>
+                    <input  id="train-route-input" class="form-control" type="text">
+                  </div>
+                  <div class="form-group">
+                    <label for="train-origin-input">Train Origin</label>
+                    <input  id="train-origin-input" class="form-control" type="text">
+                  </div>
+                  <div class="form-group">
+                    <label for="train-next-arrival-input">Next Train Arrives At</label>
+                    <input  id="train-next-arrival-input" class="form-control" type="text">
+                  </div>
+                  <div class="form-group">
+                    <label for="train-interval-input">Frequency</label>
+                    <input  id="train-interval-input" class="form-control" type="text">
+                  </div>
+              </form>
+          </div>
+          <!--Footer-->
+          <div class="modal-footer flex-center">
+            <button class="btn btn-success waves-effect" data-dismiss="modal" id="update-train-btn">Update</button>
+            <button class="btn btn-danger waves-effect" data-dismiss="modal" id="delete-train-btn">Delete</button>
+            <button class="btn btn-default waves-effect" data-dismiss="modal">No Changes</button>
+          </div>
+        </div>
       </div>
     </div>
-    <!--/.Content-->
-  </div>
-</div>
-<!--Modal: modalConfirmTrainAdded-->
+    <!--Modal: modalModifyTrain-->
+
+    <!--Modal: modalConfirmSuccess-->
+    <div class="modal fade" id="modalConfirmSuccess" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+        <!--Content-->
+        <div class="modal-content text-center">
+
+          <!--Header-->
+          <div class="modal-header d-flex justify-content-center btn-success">
+            <p class="heading">Successful</p>
+          </div>
+
+          <!--Body-->
+          <div class="modal-body">
+            <p class="heading" id="added-train-info"></p>
+            <i class="fas fa-thumbs-up animated rotateIn"></i>
+          </div>
+
+          <!--Footer-->
+          <div class="modal-footer flex-center">
+            <!-- <a href="" class="btn  btn-outline-danger">Yes</a> -->
+            <a type="button" class="btn  btn-success waves-effect" data-dismiss="modal">OK</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--Modal: modalConfirmSuccessAdded-->
 
   </div>  <!-- end of container -->
 
